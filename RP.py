@@ -157,13 +157,11 @@ class NewtonERC():
         omega = self._get_omega(returns)
         x0 = np.ones([returns.shape[1], 1])/returns.shape[1]
         y0 = np.append(x0, self.newt_lambda0).reshape(-1, 1)
-        y = y0 - (np.linalg.pinv(self._get_J(omega, y0))\
-                  @ self._get_F(omega, y0))
+        y = y0 - (np.linalg.pinv(self._get_J(omega, y0)) @ self._get_F(omega, y0))
         error = np.linalg.norm(y-y0, ord=2)
         while error > self.tol:
             y_last = y
-            y = y_last - (np.linalg.pinv(self._get_J(omega, y_last))\
-                          @ self._get_F(omega, y_last))
+            y = y_last - (np.linalg.pinv(self._get_J(omega, y_last)) @ self._get_F(omega, y_last))
             error = np.linalg.norm(y-y_last, ord=2)
         return y[:-1]
         
