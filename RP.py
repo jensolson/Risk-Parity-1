@@ -7,14 +7,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import seaborn as sns
-plt.style.use('ggplot')#'fivethirtyeight')
+plt.style.use('ggplot')
 sns.set_style('darkgrid')
 
 import scipy.stats as stats
 import scipy.cluster.hierarchy as sch
 from sklearn.decomposition import PCA
-from sklearn.covariance import shrunk_covariance, ledoit_wolf, OAS,\
-                               EmpiricalCovariance
+from sklearn.covariance import shrunk_covariance, ledoit_wolf, OAS, EmpiricalCovariance
 
 """
 Global minimum variance portfolio
@@ -22,9 +21,15 @@ Pages 7-8 of
 https://faculty.washington.edu/ezivot/econ424/portfolioTheoryMatrix.pdf
 """
 def min_var(returns_array, MV_lambda):
-    """ Parameters:
-            returns_array: numpy array of historical returns
-            MV_lambda: constant in interval [0, 1)
+    """
+    Parameters
+    -----------
+    returns_array: numpy array of historical returns
+    MV_lambda: constant in interval [0, 1)
+    
+    Returns
+    -----------
+    Minimum variance portfolio weights
     """
     n_ticks = returns_array.shape[1]
     A = np.zeros([n_ticks+1, n_ticks+1])
