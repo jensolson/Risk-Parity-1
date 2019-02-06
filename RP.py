@@ -168,10 +168,7 @@ class NewtonERC():
 
 """
 Calculates risk parity weights optimizing for higher moments.
-
 Optimizes portfolio based on variance, coskewness and cokurtosis. 
-I have zeroed out kurtosis to speed up the algorithm and
-to focus on variance and skew.
 
 Source links:
 http://www.quantatrisk.com/2013/01/20/coskewness-and-cokurtosis/
